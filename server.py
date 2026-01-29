@@ -12,6 +12,17 @@ DB_NAME = "database.db"
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+
+
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({
+        "status": "ok",
+        "time": datetime.utcnow().isoformat()
+    })
+
+
+
 # ------------------ DATABASE ------------------
 
 def get_db():
